@@ -7,6 +7,26 @@ test client calls the service, the service will use the mock instead of the
 intended target. Commonly used to mock out dependencies of the service under
 test.
 
+## Adding to your projects
+
+### Server side
+
+```groovy
+dependencies {
+    implementation 'com.codeheadsystems:oop-mock:1.0.1'
+    implementation 'com.codeheadsystems:oop-mock-dynamodb:1.0.1'
+}
+```
+
+### Client test side
+
+```groovy
+dependencies {
+    implementation 'com.codeheadsystems:oop-mock-client:1.0.1'
+    implementation 'com.codeheadsystems:oop-mock-dynamodb:1.0.1'
+}
+```
+
 ## Process
 
 At its core, OopMock gets the signature of the method being mocked via the
