@@ -7,6 +7,8 @@ test client calls the service, the service will use the mock instead of the
 intended target. Commonly used to mock out dependencies of the service under
 test.
 
+Java8 Compatible.
+
 ## Adding to your projects
 
 ### Server side
