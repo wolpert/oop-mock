@@ -38,31 +38,31 @@ def pomConfig = {
 
 dependencies {
     implementation project(":oop-mock-common")
-    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
-    implementation("com.fasterxml.jackson.core:jackson-annotations:${jacksonVersion}")
-    implementation("com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}")
-    implementation("com.fasterxml.jackson.core:jackson-core:${jacksonVersion}")
-    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:${jacksonVersion}")
-    implementation("com.google.guava:guava:${guavaVersion}")
-    implementation("commons-io:commons-io:${commonsIoVersion}")
+    implementation libs.slf4j.api
+    implementation libs.jackson.annotations 
+    implementation libs.jackson.databind 
+    implementation libs.jackson.core 
+    implementation libs.jackson.datatype.jdk8 
+    implementation libs.guava 
+    implementation libs.commons.io 
 
     // Dagger
-    implementation "com.google.dagger:dagger:${daggerVersion}" // Common files for runtime
-    annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
+    implementation libs.dagger // Common files for runtime
+    annotationProcessor libs.dagger.compiler
 
     // Immutables
-    implementation("org.immutables:value-annotations:${immutablesVersion}")
-    annotationProcessor("org.immutables:value:${immutablesVersion}")
-    testAnnotationProcessor("org.immutables:value:${immutablesVersion}")
+    implementation  libs.immutables.value.annotations 
+    annotationProcessor  libs.immutables.value 
+    testAnnotationProcessor  libs.immutables.value 
 
-    testImplementation("org.assertj:assertj-core:${assertjVersion}")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${jupiterVersion}")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:${jupiterVersion}")
-    testImplementation("org.mockito:mockito-junit-jupiter:${mockitoVersion}")
-    testImplementation("org.mockito:mockito-core:${mockitoVersion}")
-    testImplementation("ch.qos.logback:logback-classic:${logbackVersion}")
-    testImplementation("ch.qos.logback:logback-core:${logbackVersion}")
+    testImplementation libs.assertj.core 
+    testImplementation libs.junit.jupiter.engine 
+    testImplementation libs.junit.jupiter.api 
+    testImplementation libs.junit.jupiter.params 
+    testImplementation libs.mockito.junit.jupiter 
+    testImplementation libs.mockito.core 
+    testImplementation libs.logback.classic 
+    testImplementation libs.logback.core 
 }
 
 publishing {

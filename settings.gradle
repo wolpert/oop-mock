@@ -2,4 +2,18 @@
  * Copyright (c) 2022 CodeHead Systems. All rights reserved
  */
 
+dependencyResolutionManagement {
+    versionCatalogs {
+        repositories {
+            mavenLocal()
+            mavenCentral()
+            maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        }
+        libs {
+            from("com.codeheadsystems:dependencies:1.0.3-SNAPSHOT")
+        }
+    }
+}
+
+
 include 'oop-mock-common', 'oop-mock-client', 'oop-mock', 'oop-mock-dynamodb', 'oop-mock-tests'
