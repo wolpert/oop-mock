@@ -15,7 +15,7 @@ dependencyResolutionManagement {
     // Added in the codehead dependencies list.
     versionCatalogs {
         libs {
-            from("com.codeheadsystems:dependencies:1.0.3")
+            from("com.codeheadsystems:dependencies:1.0.4-SNAPSHOT")
         }
     }
 }
