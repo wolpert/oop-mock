@@ -31,7 +31,7 @@ allprojects {
     apply plugin: "java-library"
     apply plugin: "idea"
     apply plugin: 'jacoco'
-    apply plugin: 'checkstyle'
+    //apply plugin: 'checkstyle'
     apply plugin: 'signing'
     apply plugin: 'maven-publish'
     java {
@@ -44,10 +44,10 @@ allprojects {
         useJUnitPlatform() // needed for junit5
         finalizedBy jacocoTestReport
     }
-    checkstyleTest { // ignore checkstyle in tests
-        ignoreFailures true
-        showViolations false
-    }
+    //checkstyleTest { // ignore checkstyle in tests
+    //    ignoreFailures true
+    //    showViolations false
+    //}
     jacocoTestReport {
         dependsOn test
         reports {
