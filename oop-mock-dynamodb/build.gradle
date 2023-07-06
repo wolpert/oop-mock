@@ -22,7 +22,7 @@ configurations {
 jacocoTestReport.finalizedBy jacocoTestCoverageVerification
 
 
-task copyNativeDeps(type: Copy) {
+tasks.register('copyNativeDeps', Copy) {
     from configurations.dynamodb
     into "$project.buildDir/libs/"
 }
@@ -54,8 +54,6 @@ def pomConfig = {
 }
 
 dependencies {
-
-
     implementation project(":oop-mock-common")
     implementation project(":oop-mock-client")
     testImplementation project(":oop-mock-tests")
@@ -144,4 +142,8 @@ publishing {
 signing {
     useGpgCmd()
     sign publishing.publications.mavenJava
+}
+
+generateMetadataFileForMavenJavaPublication {
+    dependsOn(":oop-mock-dynamodb:copyNativeDeps")
 }
