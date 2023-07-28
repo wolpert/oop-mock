@@ -19,11 +19,22 @@ package com.codeheadsystems.oop.test;
 import com.codeheadsystems.oop.client.OopMockClient;
 import com.codeheadsystems.oop.client.OopMockClientFactory;
 
+/**
+ * The type Client.
+ */
 public class Client {
+  /**
+   * The constant MOCKED_DATA.
+   */
   public static final String MOCKED_DATA = "this is mocked data";
 
   private final OopMockClientFactory factory;
 
+  /**
+   * Instantiates a new Client.
+   *
+   * @param factory the factory
+   */
   public Client(final OopMockClientFactory factory) {
     this.factory = factory;
   }
@@ -33,6 +44,7 @@ public class Client {
    * Expected result would be un-mocked data.
    *
    * @param server we are calling.
+   * @param id     the id
    * @return data from the server.
    */
   public String callServerWithoutMock(final Server server, final String id) {
@@ -45,6 +57,7 @@ public class Client {
    * Expected result would be un-mocked data.
    *
    * @param server we are calling.
+   * @param id     the id
    * @return data from the server.
    */
   public String callServerWithMockOnDifferentId(final Server server, final String id) {
@@ -64,6 +77,7 @@ public class Client {
    * Expected result would be mocked data.
    *
    * @param server we are calling.
+   * @param id     the id
    * @return data from the server.
    */
   public String callServerMocked(final Server server, final String id) {

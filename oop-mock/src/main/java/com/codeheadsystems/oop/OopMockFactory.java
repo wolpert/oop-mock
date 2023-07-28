@@ -35,6 +35,13 @@ public class OopMockFactory {
 
   private final Generator generator;
 
+  /**
+   * Instantiates a new Oop mock factory.
+   *
+   * @param oopMockConfiguration the oop mock configuration
+   * @param classOopMockFactory  the class oop mock factory
+   * @param passThroughOopMock   the pass through oop mock
+   */
   @Inject
   public OopMockFactory(final OopMockConfiguration oopMockConfiguration,
                         final ClassOopMockFactory classOopMockFactory,
@@ -50,12 +57,27 @@ public class OopMockFactory {
     }
   }
 
+  /**
+   * Generate oop mock.
+   *
+   * @param clazz the clazz
+   * @return the oop mock
+   */
   public OopMock generate(final Class<?> clazz) {
     return generator.generate(clazz);
   }
 
+  /**
+   * The interface Generator.
+   */
   @FunctionalInterface
   public interface Generator {
+    /**
+     * Generate oop mock.
+     *
+     * @param clazz the clazz
+     * @return the oop mock
+     */
     OopMock generate(final Class<?> clazz);
   }
 }

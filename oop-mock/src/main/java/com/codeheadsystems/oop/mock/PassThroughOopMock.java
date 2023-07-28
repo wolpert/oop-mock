@@ -28,6 +28,9 @@ import javax.inject.Singleton;
 @Singleton
 public class PassThroughOopMock implements OopMock {
 
+  /**
+   * Instantiates a new Pass through oop mock.
+   */
   @Inject
   public PassThroughOopMock() {
 

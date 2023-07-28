@@ -30,14 +30,31 @@ import javax.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * The type In memory resolver.
+ */
 @Singleton
 public class InMemoryResolver implements MockDataResolver {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(InMemoryResolver.class);
 
+  /**
+   * The Hasher.
+   */
   protected final Hasher hasher;
+  /**
+   * The Datastore.
+   */
   protected final Map<String, Map<String, MockedData>> datastore;
 
+  /**
+   * Instantiates a new In memory resolver.
+   *
+   * @param configuration the configuration
+   * @param converter     the converter
+   * @param manager       the manager
+   * @param hasher        the hasher
+   */
   @Inject
   public InMemoryResolver(final OopMockConfiguration configuration,
                           final JsonConverter converter,

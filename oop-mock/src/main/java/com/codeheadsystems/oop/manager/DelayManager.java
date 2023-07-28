@@ -23,6 +23,9 @@ import javax.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * The type Delay manager.
+ */
 @Singleton
 public class DelayManager {
   private static final Logger LOGGER = LoggerFactory.getLogger(DelayManager.class);
@@ -32,6 +35,13 @@ public class DelayManager {
   private final Clock clock;
   private final SleeperManager sleeper;
 
+  /**
+   * Instantiates a new Delay manager.
+   *
+   * @param configuration the configuration
+   * @param clock         the clock
+   * @param sleeper       the sleeper
+   */
   @Inject
   public DelayManager(final OopMockConfiguration configuration,
                       final Clock clock,
@@ -43,10 +53,21 @@ public class DelayManager {
     LOGGER.info("DelayManager({},{},{})", delayEnabled, maxDelayTimeMS, clock);
   }
 
+  /**
+   * Start millis long.
+   *
+   * @return the long
+   */
   public long startMillis() {
     return clock.millis();
   }
 
+  /**
+   * Delay.
+   *
+   * @param start the start
+   * @param delay the delay
+   */
   public void delay(final long start, final long delay) {
     if (delayEnabled) {
       LOGGER.debug("delay({},{}", start, delay);

@@ -42,59 +42,128 @@ import javax.inject.Singleton;
 @Module(includes = {ResolverModule.ResolverConfigModule.class})
 public interface ResolverModule {
 
+  /**
+   * The constant RESOLVER_MAP.
+   */
   String RESOLVER_MAP = "resolver_map";
+  /**
+   * The constant RESOLVER_INTERNAL_MAP.
+   */
   String RESOLVER_INTERNAL_MAP = "resolver internal map";
+  /**
+   * The constant DEFAULT_RESOLVER.
+   */
   String DEFAULT_RESOLVER = "DEFAULT RESOLVER";
+  /**
+   * The constant RESOLVER_CLASSNAME.
+   */
   String RESOLVER_CLASSNAME = "RESOLVER CLASSNAME";
+  /**
+   * The constant RESOLVER_ADDITIONAL_DEPS.
+   */
   String RESOLVER_ADDITIONAL_DEPS = "Additional_Dependencies";
 
+  /**
+   * Binds oop mock configuration object.
+   *
+   * @param configuration the configuration
+   * @return the object
+   */
   @Named(RESOLVER_INTERNAL_MAP)
   @Binds
   @IntoMap
   @ClassKey(OopMockConfiguration.class)
   Object bindsOopMockConfiguration(OopMockConfiguration configuration);
 
+  /**
+   * Binds json converter object.
+   *
+   * @param converter the converter
+   * @return the object
+   */
   @Named(RESOLVER_INTERNAL_MAP)
   @Binds
   @IntoMap
   @ClassKey(JsonConverter.class)
   Object bindsJsonConverter(JsonConverter converter);
 
+  /**
+   * Binds resource lookup manager object.
+   *
+   * @param manager the manager
+   * @return the object
+   */
   @Named(RESOLVER_INTERNAL_MAP)
   @Binds
   @IntoMap
   @ClassKey(ResourceLookupManager.class)
   Object bindsResourceLookupManager(ResourceLookupManager manager);
 
+  /**
+   * Binds translator object.
+   *
+   * @param translator the translator
+   * @return the object
+   */
   @Named(RESOLVER_INTERNAL_MAP)
   @Binds
   @IntoMap
   @ClassKey(Translator.class)
   Object bindsTranslator(Translator translator);
 
+  /**
+   * Binds hasher object.
+   *
+   * @param hasher the hasher
+   * @return the object
+   */
   @Named(RESOLVER_INTERNAL_MAP)
   @Binds
   @IntoMap
   @ClassKey(Hasher.class)
   Object bindsHasher(Hasher hasher);
 
+  /**
+   * Default resolver string.
+   *
+   * @return the string
+   */
   @BindsOptionalOf
   @Named(DEFAULT_RESOLVER)
   String defaultResolver();
 
+  /**
+   * The type Resolver config module.
+   */
   @Module
   class ResolverConfigModule {
 
     private final Map<Class<?>, Object> additionalDependencies;
 
+    /**
+     * Instantiates a new Resolver config module.
+     */
     public ResolverConfigModule() {
       this(ImmutableMap.of());
     }
 
+    /**
+     * Instantiates a new Resolver config module.
+     *
+     * @param additionalDependencies the additional dependencies
+     */
     public ResolverConfigModule(final Map<Class<?>, Object> additionalDependencies) {
       this.additionalDependencies = additionalDependencies;
     }
 
+    /**
+     * Full dependencies map.
+     *
+     * @param addition      the addition
+     * @param internal      the internal
+     * @param configuration the configuration
+     * @return the map
+     */
     @Provides
     @Singleton
     @Named(RESOLVER_MAP)
@@ -108,6 +177,11 @@ public interface ResolverModule {
       return builder.build();
     }
 
+    /**
+     * Additional dependencies map.
+     *
+     * @return the map
+     */
     @Provides
     @Singleton
     @Named(RESOLVER_ADDITIONAL_DEPS)
@@ -115,6 +189,13 @@ public interface ResolverModule {
       return additionalDependencies;
     }
 
+    /**
+     * Resolver class name string.
+     *
+     * @param defaultResolver the default resolver
+     * @param configuration   the configuration
+     * @return the string
+     */
     @Provides
     @Singleton
     @Named(RESOLVER_CLASSNAME)

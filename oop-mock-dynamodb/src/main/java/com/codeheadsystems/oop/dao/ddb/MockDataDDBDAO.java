@@ -27,6 +27,9 @@ import javax.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * The type Mock data ddbdao.
+ */
 @Singleton
 public class MockDataDDBDAO implements MockDataDAO {
 
@@ -34,6 +37,12 @@ public class MockDataDDBDAO implements MockDataDAO {
   private final DynamoDBMapper mapper;
   private DDBEntryConverter converter;
 
+  /**
+   * Instantiates a new Mock data ddbdao.
+   *
+   * @param mapper    the mapper
+   * @param converter the converter
+   */
   @Inject
   public MockDataDDBDAO(final DynamoDBMapper mapper,
                         final DDBEntryConverter converter) {

@@ -25,6 +25,9 @@ import dagger.assisted.AssistedInject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * The type Oop mock client.
+ */
 public class OopMockClient {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(OopMockClient.class);
@@ -33,6 +36,14 @@ public class OopMockClient {
   private final Translator translator;
   private final String namespace;
 
+  /**
+   * Instantiates a new Oop mock client.
+   *
+   * @param clazz      the clazz
+   * @param hasher     the hasher
+   * @param dao        the dao
+   * @param translator the translator
+   */
   @AssistedInject
   public OopMockClient(@Assisted final Class<?> clazz,
                        final Hasher hasher,
@@ -44,6 +55,14 @@ public class OopMockClient {
     this.translator = translator;
   }
 
+  /**
+   * Mock setup.
+   *
+   * @param <R>      the type parameter
+   * @param mockData the mock data
+   * @param lookup   the lookup
+   * @param id       the id
+   */
   public <R> void mockSetup(final R mockData,
                             final String lookup,
                             final String id) {
@@ -52,6 +71,12 @@ public class OopMockClient {
     dao.store(namespace, lookup, id, storedMockData);
   }
 
+  /**
+   * Delete mock.
+   *
+   * @param lookup the lookup
+   * @param id     the id
+   */
   public void deleteMock(final String lookup,
                          final String id) {
     LOGGER.info("mockDelete({},{})", lookup, id);

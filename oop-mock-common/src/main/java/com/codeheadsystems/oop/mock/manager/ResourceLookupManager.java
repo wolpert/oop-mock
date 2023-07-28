@@ -22,17 +22,34 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+/**
+ * The type Resource lookup manager.
+ */
 @Singleton
 public class ResourceLookupManager {
 
+  /**
+   * The constant LOOKUP_CLASS.
+   */
   public static final String LOOKUP_CLASS = "ResourceLookupManager.lookupClass";
   private final ClassLoader lookupClassLoader;
 
+  /**
+   * Instantiates a new Resource lookup manager.
+   *
+   * @param lookupClassLoader the lookup class loader
+   */
   @Inject
   public ResourceLookupManager(@Named(LOOKUP_CLASS) final Optional<ClassLoader> lookupClassLoader) {
     this.lookupClassLoader = lookupClassLoader.orElse(ResourceLookupManager.class.getClassLoader());
   }
 
+  /**
+   * Input stream optional.
+   *
+   * @param filename the filename
+   * @return the optional
+   */
   public Optional<InputStream> inputStream(final String filename) {
     return Optional.ofNullable(lookupClassLoader.getResourceAsStream(filename));
   }

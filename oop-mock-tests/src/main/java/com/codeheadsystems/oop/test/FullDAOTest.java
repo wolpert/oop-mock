@@ -31,17 +31,37 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * The type Full dao test.
+ */
 public abstract class FullDAOTest {
 
+  /**
+   * The constant ID.
+   */
   protected static final String ID = "id";
 
+  /**
+   * The Oop mock client factory.
+   */
   protected OopMockClientFactory oopMockClientFactory;
+  /**
+   * The Oop mock factory.
+   */
   protected OopMockFactory oopMockFactory;
+  /**
+   * The Client.
+   */
   protected Client client;
+  /**
+   * The Server.
+   */
   protected Server server;
 
   /**
    * The resolver configuration you expect clients to use in their configuration file.
+   *
+   * @return the resolver configuration
    */
   protected abstract ResolverConfiguration resolverConfiguration();
 
@@ -49,9 +69,14 @@ public abstract class FullDAOTest {
    * These are optional dependencies if your resolver dao needs them for construction.
    * If this is not null/empty, you need to document what is expected here from users,
    * as this requires coding changes by the users.
+   *
+   * @return the map
    */
   protected abstract Map<Class<?>, Object> resolverDeps();
 
+  /**
+   * Sets up oop mock.
+   */
   @BeforeEach
   public void setUpOopMock() {
     final OopMockConfiguration oopMockConfiguration = ImmutableOopMockConfiguration.builder()
@@ -71,6 +96,9 @@ public abstract class FullDAOTest {
     client = new Client(oopMockClientFactory);
   }
 
+  /**
+   * Call without mock.
+   */
   @Test
   public void callWithoutMock() {
     assertThat(client.callServerWithoutMock(server, ID))
@@ -78,6 +106,9 @@ public abstract class FullDAOTest {
         .isEqualTo(Server.BASE_RESULT);
   }
 
+  /**
+   * Call with different id mocked.
+   */
   @Test
   public void callWithDifferentIdMocked() {
     assertThat(client.callServerWithMockOnDifferentId(server, ID))
@@ -85,6 +116,9 @@ public abstract class FullDAOTest {
         .isEqualTo(Server.BASE_RESULT);
   }
 
+  /**
+   * Call with mock.
+   */
   @Test
   public void callWithMock() {
     assertThat(client.callServerMocked(server, ID))

@@ -22,6 +22,9 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.Map;
 import org.immutables.value.Value;
 
+/**
+ * The interface In memory mocked data store.
+ */
 @Value.Immutable
 @JsonSerialize(as = ImmutableInMemoryMockedDataStore.class)
 @JsonDeserialize(builder = ImmutableInMemoryMockedDataStore.Builder.class)
@@ -33,7 +36,7 @@ public interface InMemoryMockedDataStore {
    * boot and used. Note that this is mostly used for testing or writing mocked data. Unless your
    * needs are small, you likely want a real datastore.
    *
-   * @return Namespace->discriminator->mocked data map. (discriminator = lookup.id as processed by hasher)
+   * @return Namespace ->discriminator->mocked data map. (discriminator = lookup.id as processed by hasher)
    */
   Map<String, Map<String, MockedData>> datastore();
 

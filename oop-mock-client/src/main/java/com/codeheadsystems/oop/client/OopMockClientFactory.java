@@ -25,6 +25,9 @@ import javax.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * The type Oop mock client factory.
+ */
 @Singleton
 public class OopMockClientFactory {
 
@@ -32,12 +35,23 @@ public class OopMockClientFactory {
 
   private final LoadingCache<Class<?>, OopMockClient> cache;
 
+  /**
+   * Instantiates a new Oop mock client factory.
+   *
+   * @param assistedFactory the assisted factory
+   */
   @Inject
   public OopMockClientFactory(final OopMockClientAssistedFactory assistedFactory) {
     LOGGER.info("OopMockClientFactory()");
     this.cache = CacheBuilder.newBuilder().build(CacheLoader.from(assistedFactory::create));
   }
 
+  /**
+   * Generate oop mock client.
+   *
+   * @param clazz the clazz
+   * @return the oop mock client
+   */
   public OopMockClient generate(final Class<?> clazz) {
     LOGGER.info("generate({})", clazz);
     return cache.getUnchecked(clazz);

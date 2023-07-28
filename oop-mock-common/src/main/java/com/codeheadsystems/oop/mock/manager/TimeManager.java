@@ -22,16 +22,29 @@ import javax.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * The type Time manager.
+ */
 @Singleton
 public class TimeManager {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(TimeManager.class);
 
+  /**
+   * Instantiates a new Time manager.
+   */
   @Inject
   public TimeManager() {
     LOGGER.info("TimeManager()");
   }
 
+  /**
+   * Log timed r.
+   *
+   * @param <R>      the type parameter
+   * @param supplier the supplier
+   * @return the r
+   */
   public <R> R logTimed(final Supplier<R> supplier) {
     final long start = System.currentTimeMillis();
     try {

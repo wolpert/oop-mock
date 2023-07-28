@@ -19,9 +19,18 @@ package com.codeheadsystems.oop.client.dagger;
 import com.codeheadsystems.oop.client.OopMockClient;
 import dagger.assisted.AssistedFactory;
 
+/**
+ * The interface Oop mock client assisted factory.
+ */
 @AssistedFactory
 public interface OopMockClientAssistedFactory {
 
+  /**
+   * Create oop mock client.
+   *
+   * @param clazz the clazz
+   * @return the oop mock client
+   */
   OopMockClient create(final Class<?> clazz);
 
 }

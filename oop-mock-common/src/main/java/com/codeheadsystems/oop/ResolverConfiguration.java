@@ -24,6 +24,9 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.util.List;
 import org.immutables.value.Value;
 
+/**
+ * The interface Resolver configuration.
+ */
 @Value.Immutable
 @JsonSerialize(as = ImmutableResolverConfiguration.class)
 @JsonDeserialize(builder = ImmutableResolverConfiguration.Builder.class)
@@ -34,12 +37,17 @@ public interface ResolverConfiguration {
    * This is the class that implements MockDataResolver. Note that we require there is one and only one
    * constructor with the @Inject annotation. (We use that to build the class.)
    *
-   * @return classname.
+   * @return classname. string
    * @see ResolverFactory
    */
   @JsonProperty("resolverClass")
   String resolverClass();
 
+  /**
+   * Configuration lines list.
+   *
+   * @return the list
+   */
   @JsonProperty("configurationLines")
   List<String> configurationLines();
 

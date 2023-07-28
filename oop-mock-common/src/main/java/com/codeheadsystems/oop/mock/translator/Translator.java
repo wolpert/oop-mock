@@ -29,9 +29,9 @@ public interface Translator {
   /**
    * Convert the marshalled text back to the original object.
    *
+   * @param <R>            type of object.
    * @param clazz          class of what we are returning.
    * @param marshalledData that we converted before.
-   * @param <R>            type of object.
    * @return the object.
    */
   <R> R unmarshal(Class<R> clazz, MockedData marshalledData);
@@ -39,8 +39,8 @@ public interface Translator {
   /**
    * Convert the object to text that can be stored.
    *
-   * @param object to marshall.
    * @param <R>    type of object.
+   * @param object to marshall.
    * @return the marshall text.
    */
   <R> MockedData marshal(R object);

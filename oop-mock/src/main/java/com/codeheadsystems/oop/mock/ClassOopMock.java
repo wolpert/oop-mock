@@ -33,6 +33,13 @@ public class ClassOopMock implements OopMock {
   private final String namespace;
   private final ProxyManager proxyManager;
 
+  /**
+   * Instantiates a new Class oop mock.
+   *
+   * @param clazz        the clazz
+   * @param hasher       the hasher
+   * @param proxyManager the proxy manager
+   */
   @AssistedInject
   public ClassOopMock(@Assisted final Class<?> clazz,
                       final Hasher hasher,

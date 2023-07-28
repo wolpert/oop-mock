@@ -19,23 +19,41 @@ package com.codeheadsystems.oop.mock;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+/**
+ * The type Hasher.
+ */
 @Singleton
 public class Hasher {
 
+  /**
+   * The constant NAMESPACE_DELIMINATOR.
+   */
   public static final String NAMESPACE_DELIMINATOR = ":";
+  /**
+   * The constant DELIMINATOR.
+   */
   public static final String DELIMINATOR = ".";
+  /**
+   * The System.
+   */
   public final String system;
 
   /**
    * Used to get the current system.
    *
-   * @param system
+   * @param system the system
    */
   @Inject
   public Hasher(String system) {
     this.system = system;
   }
 
+  /**
+   * Hash string.
+   *
+   * @param args the args
+   * @return the string
+   */
   public String hash(final String... args) {
     return String.join(DELIMINATOR, args);
   }
@@ -44,7 +62,7 @@ public class Hasher {
    * Used to get the namespace for this instance.
    *
    * @param clazz for the namespace.
-   * @return String
+   * @return String string
    */
   public String namespace(final Class<?> clazz) {
     return String.join(NAMESPACE_DELIMINATOR, system, clazz.getCanonicalName());

@@ -23,16 +23,30 @@ import java.io.InputStream;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+/**
+ * The type Json converter.
+ */
 @Singleton
 public class JsonConverter {
 
   private final ObjectMapper mapper;
 
+  /**
+   * Instantiates a new Json converter.
+   *
+   * @param mapper the mapper
+   */
   @Inject
   public JsonConverter(final ObjectMapper mapper) {
     this.mapper = mapper;
   }
 
+  /**
+   * To json string.
+   *
+   * @param resource the resource
+   * @return the string
+   */
   public String toJson(final Object resource) {
     try {
       return mapper.writeValueAsString(resource);
@@ -41,6 +55,14 @@ public class JsonConverter {
     }
   }
 
+  /**
+   * Convert r.
+   *
+   * @param <R>   the type parameter
+   * @param json  the json
+   * @param clazz the clazz
+   * @return the r
+   */
   public <R> R convert(final String json, final Class<R> clazz) {
     try {
       return mapper.readValue(json, clazz);
@@ -49,6 +71,14 @@ public class JsonConverter {
     }
   }
 
+  /**
+   * Convert r.
+   *
+   * @param <R>         the type parameter
+   * @param inputStream the input stream
+   * @param clazz       the clazz
+   * @return the r
+   */
   public <R> R convert(final InputStream inputStream, final Class<R> clazz) {
     try {
       return mapper.readValue(inputStream, clazz); // this will close the stream automatically.

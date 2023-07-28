@@ -33,31 +33,64 @@ import java.util.Map;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+/**
+ * The interface Oop mock factory builder.
+ */
 @Component(modules = {StandardModule.class, OopMockFactoryBuilder.ServerResolverModule.class})
 @Singleton
 public interface OopMockFactoryBuilder {
 
+  /**
+   * Generate oop mock factory.
+   *
+   * @return the oop mock factory
+   */
   static OopMockFactory generate() {
     return DaggerOopMockFactoryBuilder.create().factory();
   }
 
+  /**
+   * Generate oop mock factory.
+   *
+   * @param resolverDeps the resolver deps
+   * @return the oop mock factory
+   */
   static OopMockFactory generate(final Map<Class<?>, Object> resolverDeps) {
     return DaggerOopMockFactoryBuilder.builder()
         .resolverConfigModule(new ResolverModule.ResolverConfigModule(resolverDeps))
         .build().factory();
   }
 
+  /**
+   * Factory oop mock factory.
+   *
+   * @return the oop mock factory
+   */
   OopMockFactory factory();
 
+  /**
+   * The type Server resolver module.
+   */
   @Module
   class ServerResolverModule {
 
+    /**
+     * Clock clock.
+     *
+     * @return the clock
+     */
     @Provides
     @Singleton
     public Clock clock() {
       return Clock.systemUTC();
     }
 
+    /**
+     * Resolver mock data resolver.
+     *
+     * @param factory the factory
+     * @return the mock data resolver
+     */
     @Provides
     @Singleton
     public MockDataResolver resolver(final ResolverFactory factory) {

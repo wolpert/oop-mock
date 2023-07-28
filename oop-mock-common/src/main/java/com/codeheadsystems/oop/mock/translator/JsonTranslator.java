@@ -22,11 +22,19 @@ import com.codeheadsystems.oop.mock.model.MockedData;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+/**
+ * The type Json translator.
+ */
 @Singleton
 public class JsonTranslator implements Translator {
 
   private final JsonConverter converter;
 
+  /**
+   * Instantiates a new Json translator.
+   *
+   * @param converter the converter
+   */
   @Inject
   public JsonTranslator(final JsonConverter converter) {
     this.converter = converter;

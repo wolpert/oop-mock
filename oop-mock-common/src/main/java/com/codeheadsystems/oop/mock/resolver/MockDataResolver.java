@@ -26,6 +26,14 @@ import java.util.Optional;
  */
 public interface MockDataResolver {
 
+  /**
+   * Resolve optional.
+   *
+   * @param namespace     the namespace
+   * @param lookup        the lookup
+   * @param discriminator the discriminator
+   * @return the optional
+   */
   Optional<MockedData> resolve(String namespace, String lookup, String discriminator);
 
 }

@@ -24,10 +24,18 @@ import javax.inject.Singleton;
  */
 @Singleton
 public class SleeperManager {
+  /**
+   * Instantiates a new Sleeper manager.
+   */
   @Inject
   public SleeperManager() {
   }
 
+  /**
+   * Sleep.
+   *
+   * @param mills the mills
+   */
   public void sleep(long mills) {
     try {
       Thread.sleep(mills);

@@ -27,28 +27,54 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
+/**
+ * The type Oop configuration module.
+ */
 @Module
 public class OopConfigurationModule {
 
+  /**
+   * The constant CONFIGURATION_FILENAME.
+   */
   public static final String CONFIGURATION_FILENAME = "oopMockConfiguration.json";
   private static final Logger LOGGER = LoggerFactory.getLogger(OopConfigurationModule.class);
   private final String configurationFileName;
   private final OopMockConfiguration configuration;
 
+  /**
+   * Instantiates a new Oop configuration module.
+   */
   public OopConfigurationModule() {
     this(CONFIGURATION_FILENAME);
   }
 
+  /**
+   * Instantiates a new Oop configuration module.
+   *
+   * @param configurationName the configuration name
+   */
   public OopConfigurationModule(final String configurationName) {
     this.configurationFileName = configurationName;
     this.configuration = null;
   }
 
+  /**
+   * Instantiates a new Oop configuration module.
+   *
+   * @param configuration the configuration
+   */
   public OopConfigurationModule(final OopMockConfiguration configuration) {
     this.configuration = configuration;
     this.configurationFileName = null;
   }
 
+  /**
+   * Configuration oop mock configuration.
+   *
+   * @param manager   the manager
+   * @param converter the converter
+   * @return the oop mock configuration
+   */
   @Provides
   @Singleton
   public OopMockConfiguration configuration(final ResourceLookupManager manager,

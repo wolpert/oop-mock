@@ -45,6 +45,12 @@ public class ResolverFactory {
   private final Map<Class<?>, Object> instanceMap;
   private final String resolverClass;
 
+  /**
+   * Instantiates a new Resolver factory.
+   *
+   * @param resolverClass the resolver class
+   * @param instanceMap   the instance map
+   */
   @Inject
   public ResolverFactory(@Named(RESOLVER_CLASSNAME) final String resolverClass,
                          @Named(RESOLVER_MAP) final Map<Class<?>, Object> instanceMap) {
@@ -53,6 +59,16 @@ public class ResolverFactory {
     this.resolverClass = resolverClass;
   }
 
+  /**
+   * Build t.
+   *
+   * @param <T> the type parameter
+   * @return the t
+   * @throws ClassNotFoundException    the class not found exception
+   * @throws InvocationTargetException the invocation target exception
+   * @throws InstantiationException    the instantiation exception
+   * @throws IllegalAccessException    the illegal access exception
+   */
   public <T> T build() throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
     LOGGER.info("build({})", resolverClass);
     final Class<?> clazz = Class.forName(resolverClass);

@@ -26,6 +26,9 @@ import java.util.Optional;
 import org.immutables.value.Value;
 import org.immutables.value.Value.Immutable;
 
+/**
+ * The interface Oop mock configuration.
+ */
 @Immutable
 @JsonSerialize(as = ImmutableOopMockConfiguration.class)
 @JsonDeserialize(builder = ImmutableOopMockConfiguration.Builder.class)
@@ -35,7 +38,7 @@ public interface OopMockConfiguration {
   /**
    * Is everything just enabled.
    *
-   * @return boolean
+   * @return boolean boolean
    */
   @Value.Default
   @JsonProperty("enabled")
@@ -57,6 +60,8 @@ public interface OopMockConfiguration {
   /**
    * Max amount of time to wait for a delay. By default we set this to 5 seconds, which is
    * forever. But set this as you need.
+   *
+   * @return the long
    */
   @Value.Default
   @JsonProperty("maxDelayTimeMS")
@@ -66,6 +71,8 @@ public interface OopMockConfiguration {
 
   /**
    * The default namespace for this instance.
+   *
+   * @return the string
    */
   @Value.Default
   @JsonProperty("namespace")

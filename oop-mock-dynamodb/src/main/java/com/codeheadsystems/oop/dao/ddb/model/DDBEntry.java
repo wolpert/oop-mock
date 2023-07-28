@@ -21,6 +21,9 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
+/**
+ * The type Ddb entry.
+ */
 @DynamoDBTable(tableName = "oop_mock_data")
 public class DDBEntry {
 
@@ -29,52 +32,108 @@ public class DDBEntry {
   private String mockData;
   private Long ttl;
 
+  /**
+   * Instantiates a new Ddb entry.
+   */
   public DDBEntry() {
   }
 
+  /**
+   * Instantiates a new Ddb entry.
+   *
+   * @param hash  the hash
+   * @param range the range
+   */
   public DDBEntry(final String hash, final String range) {
     this.hash = hash;
     this.range = range;
   }
 
+  /**
+   * Instantiates a new Ddb entry.
+   *
+   * @param hash     the hash
+   * @param range    the range
+   * @param mockData the mock data
+   */
   public DDBEntry(final String hash, final String range, final String mockData) {
     this.hash = hash;
     this.range = range;
     this.mockData = mockData;
   }
 
+  /**
+   * Gets hash.
+   *
+   * @return the hash
+   */
   @DynamoDBHashKey(attributeName = "hash")
   public String getHash() {
     return hash;
   }
 
+  /**
+   * Sets hash.
+   *
+   * @param hash the hash
+   */
   public void setHash(final String hash) {
     this.hash = hash;
   }
 
+  /**
+   * Gets range.
+   *
+   * @return the range
+   */
   @DynamoDBRangeKey(attributeName = "range")
   public String getRange() {
     return range;
   }
 
+  /**
+   * Sets range.
+   *
+   * @param range the range
+   */
   public void setRange(final String range) {
     this.range = range;
   }
 
+  /**
+   * Gets mock data.
+   *
+   * @return the mock data
+   */
   @DynamoDBAttribute(attributeName = "mock_data")
   public String getMockData() {
     return mockData;
   }
 
+  /**
+   * Sets mock data.
+   *
+   * @param mockData the mock data
+   */
   public void setMockData(final String mockData) {
     this.mockData = mockData;
   }
 
+  /**
+   * Gets ttl.
+   *
+   * @return the ttl
+   */
   @DynamoDBAttribute(attributeName = "ttl")
   public Long getTtl() {
     return ttl;
   }
 
+  /**
+   * Sets ttl.
+   *
+   * @param ttl the ttl
+   */
   public void setTtl(final Long ttl) {
     this.ttl = ttl;
   }

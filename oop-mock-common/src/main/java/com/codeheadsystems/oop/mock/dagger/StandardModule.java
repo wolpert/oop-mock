@@ -31,16 +31,29 @@ import java.util.Optional;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+/**
+ * The type Standard module.
+ */
 @Module(includes = {StandardModule.BindingsModule.class, OopConfigurationModule.class, ResolverModule.class})
 public class StandardModule {
 
+  /**
+   * The constant OOP_SYSTEM.
+   */
   public static final String OOP_SYSTEM = "OOP_SYSTEM";
+  /**
+   * The constant NAMESPACE.
+   */
   public static final String NAMESPACE = "DEFAULT";
 
   /**
    * If the namespace is configured in the Dagger environment, we will use that. Else we will use what
    * is in the configuration file. Note that the configuration file pulls the default namespace from
    * here.
+   *
+   * @param system        the system
+   * @param configuration the configuration
+   * @return the hasher
    */
   @Provides
   @Singleton
@@ -49,18 +62,33 @@ public class StandardModule {
     return new Hasher(system.orElse(configuration.namespace()));
   }
 
+  /**
+   * Object mapper object mapper.
+   *
+   * @param factory the factory
+   * @return the object mapper
+   */
   @Provides
   @Singleton
   public ObjectMapper objectMapper(final ObjectMapperFactory factory) {
     return factory.objectMapper();
   }
 
+  /**
+   * Translator translator.
+   *
+   * @param translator the translator
+   * @return the translator
+   */
   @Provides
   @Singleton
   public Translator translator(final JsonTranslator translator) {
     return translator;
   }
 
+  /**
+   * The interface Bindings module.
+   */
   @Module
   interface BindingsModule {
 

@@ -28,25 +28,53 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 import javax.inject.Singleton;
 
+/**
+ * The interface Oop mock client factory builder.
+ */
 @Component(modules = {StandardModule.class, OopMockClientFactoryBuilder.ClientModule.class})
 @Singleton
 public interface OopMockClientFactoryBuilder {
 
+  /**
+   * Generate oop mock client factory.
+   *
+   * @return the oop mock client factory
+   */
   static OopMockClientFactory generate() {
     return DaggerOopMockClientFactoryBuilder.create().factory();
   }
 
+  /**
+   * Generate oop mock client factory.
+   *
+   * @param resolverDeps the resolver deps
+   * @return the oop mock client factory
+   */
   static OopMockClientFactory generate(final Map<Class<?>, Object> resolverDeps) {
     return DaggerOopMockClientFactoryBuilder.builder()
         .resolverConfigModule(new ResolverModule.ResolverConfigModule(resolverDeps))
         .build().factory();
   }
 
+  /**
+   * Factory oop mock client factory.
+   *
+   * @return the oop mock client factory
+   */
   OopMockClientFactory factory();
 
+  /**
+   * The type Client module.
+   */
   @Module
   class ClientModule {
 
+    /**
+     * Dao mock data dao.
+     *
+     * @param resolverFactory the resolver factory
+     * @return the mock data dao
+     */
     @Provides
     @Singleton
     MockDataDAO dao(final ResolverFactory resolverFactory) {

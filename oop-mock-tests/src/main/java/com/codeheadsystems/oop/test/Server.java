@@ -19,17 +19,37 @@ package com.codeheadsystems.oop.test;
 import com.codeheadsystems.oop.OopMock;
 import com.codeheadsystems.oop.OopMockFactory;
 
+/**
+ * The type Server.
+ */
 public class Server {
+  /**
+   * The constant BASE_RESULT.
+   */
   public static final String BASE_RESULT = "This is from the server";
+  /**
+   * The constant LOOKUP.
+   */
   public static final String LOOKUP = "getBaseResult";
 
   private final OopMockFactory factory;
 
+  /**
+   * Instantiates a new Server.
+   *
+   * @param factory the factory
+   */
   public Server(final OopMockFactory factory) {
     this.factory = factory;
   }
 
 
+  /**
+   * Gets base result.
+   *
+   * @param id the id
+   * @return the base result
+   */
   public String getBaseResult(String id) {
     final OopMock oopMock = factory.generate(Server.class);
     return oopMock.proxy(String.class, this::getBaseResult, LOOKUP, id);

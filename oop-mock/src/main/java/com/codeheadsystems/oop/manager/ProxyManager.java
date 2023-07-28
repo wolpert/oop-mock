@@ -26,6 +26,9 @@ import javax.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * The type Proxy manager.
+ */
 @Singleton
 public class ProxyManager {
 
@@ -34,6 +37,13 @@ public class ProxyManager {
   private final Translator translator;
   private final DelayManager delayManager;
 
+  /**
+   * Instantiates a new Proxy manager.
+   *
+   * @param resolver     the resolver
+   * @param translator   the translator
+   * @param delayManager the delay manager
+   */
   @Inject
   public ProxyManager(final MockDataResolver resolver,
                       final Translator translator,
@@ -43,6 +53,17 @@ public class ProxyManager {
     this.delayManager = delayManager;
   }
 
+  /**
+   * Proxy r.
+   *
+   * @param <R>         the type parameter
+   * @param namespace   the namespace
+   * @param lookup      the lookup
+   * @param id          the id
+   * @param returnClass the return class
+   * @param supplier    the supplier
+   * @return the r
+   */
   public <R> R proxy(final String namespace,
                      final String lookup,
                      final String id,

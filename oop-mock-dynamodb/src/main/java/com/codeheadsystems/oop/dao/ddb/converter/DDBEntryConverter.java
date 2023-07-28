@@ -26,6 +26,9 @@ import javax.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * The type Ddb entry converter.
+ */
 @Singleton
 public class DDBEntryConverter {
 
@@ -34,6 +37,12 @@ public class DDBEntryConverter {
   private final Hasher hasher;
   private final JsonConverter jsonConverter;
 
+  /**
+   * Instantiates a new Ddb entry converter.
+   *
+   * @param hasher        the hasher
+   * @param jsonConverter the json converter
+   */
   @Inject
   public DDBEntryConverter(final Hasher hasher,
                            final JsonConverter jsonConverter) {
@@ -42,6 +51,15 @@ public class DDBEntryConverter {
     LOGGER.info("DDBEntryConverter({},{})", hasher, jsonConverter);
   }
 
+  /**
+   * Convert ddb entry.
+   *
+   * @param namespace     the namespace
+   * @param lookup        the lookup
+   * @param discriminator the discriminator
+   * @param data          the data
+   * @return the ddb entry
+   */
   public DDBEntry convert(final String namespace,
                           final String lookup,
                           final String discriminator,
@@ -52,6 +70,14 @@ public class DDBEntryConverter {
     return entry;
   }
 
+  /**
+   * Convert ddb entry.
+   *
+   * @param namespace     the namespace
+   * @param lookup        the lookup
+   * @param discriminator the discriminator
+   * @return the ddb entry
+   */
   public DDBEntry convert(final String namespace,
                           final String lookup,
                           final String discriminator) {
@@ -59,6 +85,12 @@ public class DDBEntryConverter {
     return new DDBEntry(namespace, secondary);
   }
 
+  /**
+   * To mocked data optional.
+   *
+   * @param entry the entry
+   * @return the optional
+   */
   public Optional<MockedData> toMockedData(final DDBEntry entry) {
     if (entry.getMockData() == null) {
       return Optional.empty();

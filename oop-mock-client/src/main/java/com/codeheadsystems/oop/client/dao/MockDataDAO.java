@@ -19,10 +19,28 @@ package com.codeheadsystems.oop.client.dao;
 import com.codeheadsystems.oop.mock.model.MockedData;
 import com.codeheadsystems.oop.mock.resolver.MockDataResolver;
 
+/**
+ * The interface Mock data dao.
+ */
 public interface MockDataDAO extends MockDataResolver {
 
+  /**
+   * Store.
+   *
+   * @param namespace     the namespace
+   * @param lookup        the lookup
+   * @param discriminator the discriminator
+   * @param data          the data
+   */
   void store(String namespace, String lookup, String discriminator, MockedData data);
 
+  /**
+   * Delete.
+   *
+   * @param namespace     the namespace
+   * @param lookup        the lookup
+   * @param discriminator the discriminator
+   */
   void delete(String namespace, String lookup, String discriminator);
 
 }
