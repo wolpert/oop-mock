@@ -96,8 +96,8 @@ public interface OopMockFactoryBuilder {
     public MockDataResolver resolver(final ResolverFactory factory) {
       try {
         return factory.build();
-      } catch (ClassNotFoundException | InvocationTargetException | InstantiationException |
-               IllegalAccessException e) {
+      } catch (ClassNotFoundException | InvocationTargetException | InstantiationException
+               | IllegalAccessException e) {
         throw new RuntimeException(e);
       }
     }

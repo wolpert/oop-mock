@@ -34,7 +34,7 @@ import org.junit.jupiter.api.Test;
 /**
  * The type Full dao test.
  */
-public abstract class FullDAOTest {
+public abstract class FullDaoTest {
 
   /**
    * The constant ID.

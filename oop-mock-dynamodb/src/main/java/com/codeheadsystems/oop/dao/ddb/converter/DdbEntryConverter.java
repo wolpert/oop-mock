@@ -16,7 +16,7 @@
 
 package com.codeheadsystems.oop.dao.ddb.converter;
 
-import com.codeheadsystems.oop.dao.ddb.model.DDBEntry;
+import com.codeheadsystems.oop.dao.ddb.model.DdbEntry;
 import com.codeheadsystems.oop.mock.Hasher;
 import com.codeheadsystems.oop.mock.converter.JsonConverter;
 import com.codeheadsystems.oop.mock.model.MockedData;
@@ -30,9 +30,9 @@ import org.slf4j.LoggerFactory;
  * The type Ddb entry converter.
  */
 @Singleton
-public class DDBEntryConverter {
+public class DdbEntryConverter {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(DDBEntryConverter.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(DdbEntryConverter.class);
 
   private final Hasher hasher;
   private final JsonConverter jsonConverter;
@@ -44,11 +44,11 @@ public class DDBEntryConverter {
    * @param jsonConverter the json converter
    */
   @Inject
-  public DDBEntryConverter(final Hasher hasher,
+  public DdbEntryConverter(final Hasher hasher,
                            final JsonConverter jsonConverter) {
     this.hasher = hasher;
     this.jsonConverter = jsonConverter;
-    LOGGER.info("DDBEntryConverter({},{})", hasher, jsonConverter);
+    LOGGER.info("DdbEntryConverter({},{})", hasher, jsonConverter);
   }
 
   /**
@@ -60,11 +60,11 @@ public class DDBEntryConverter {
    * @param data          the data
    * @return the ddb entry
    */
-  public DDBEntry convert(final String namespace,
+  public DdbEntry convert(final String namespace,
                           final String lookup,
                           final String discriminator,
                           final MockedData data) {
-    final DDBEntry entry = convert(namespace, lookup, discriminator);
+    final DdbEntry entry = convert(namespace, lookup, discriminator);
     final String json = jsonConverter.toJson(data);
     entry.setMockData(json);
     return entry;
@@ -78,11 +78,11 @@ public class DDBEntryConverter {
    * @param discriminator the discriminator
    * @return the ddb entry
    */
-  public DDBEntry convert(final String namespace,
+  public DdbEntry convert(final String namespace,
                           final String lookup,
                           final String discriminator) {
     final String secondary = hasher.hash(lookup, discriminator);
-    return new DDBEntry(namespace, secondary);
+    return new DdbEntry(namespace, secondary);
   }
 
   /**
@@ -91,7 +91,7 @@ public class DDBEntryConverter {
    * @param entry the entry
    * @return the optional
    */
-  public Optional<MockedData> toMockedData(final DDBEntry entry) {
+  public Optional<MockedData> toMockedData(final DdbEntry entry) {
     if (entry.getMockData() == null) {
       return Optional.empty();
     } else {

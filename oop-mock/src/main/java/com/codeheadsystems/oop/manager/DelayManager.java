@@ -31,7 +31,7 @@ public class DelayManager {
   private static final Logger LOGGER = LoggerFactory.getLogger(DelayManager.class);
 
   private final boolean delayEnabled;
-  private final long maxDelayTimeMS;
+  private final long maxDelayTimeMs;
   private final Clock clock;
   private final SleeperManager sleeper;
 
@@ -49,8 +49,8 @@ public class DelayManager {
     this.sleeper = sleeper;
     this.delayEnabled = configuration.delayResponseEnabled();
     this.clock = clock;
-    this.maxDelayTimeMS = configuration.maxDelayTimeMS();
-    LOGGER.info("DelayManager({},{},{})", delayEnabled, maxDelayTimeMS, clock);
+    this.maxDelayTimeMs = configuration.maxDelayTimeMs();
+    LOGGER.info("DelayManager({},{},{})", delayEnabled, maxDelayTimeMs, clock);
   }
 
   /**
@@ -71,10 +71,10 @@ public class DelayManager {
   public void delay(final long start, final long delay) {
     if (delayEnabled) {
       LOGGER.debug("delay({},{}", start, delay);
-      final long timeSpentSoFar = Math.max(0, clock.millis() - start);// at least zero.
+      final long timeSpentSoFar = Math.max(0, clock.millis() - start); // at least zero.
       final long waitInMills = delay - timeSpentSoFar;
       // we use the min time for waiting, calculated or max wait time. Then the result must be greater than zero.
-      final long actualWaitTime = Math.max(0L, Math.min(waitInMills, maxDelayTimeMS));
+      final long actualWaitTime = Math.max(0L, Math.min(waitInMills, maxDelayTimeMs));
       LOGGER.debug("timeSpentSoFar:{}, waitInMills:{}, actualWaitTime:{}", timeSpentSoFar, waitInMills, actualWaitTime);
       sleeper.sleep(actualWaitTime);
     }

@@ -21,8 +21,8 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.model.BillingMode;
 import com.codeheadsystems.oop.ImmutableResolverConfiguration;
 import com.codeheadsystems.oop.ResolverConfiguration;
-import com.codeheadsystems.oop.dao.ddb.model.DDBEntry;
-import com.codeheadsystems.oop.test.FullDAOTest;
+import com.codeheadsystems.oop.dao.ddb.model.DdbEntry;
+import com.codeheadsystems.oop.test.FullDaoTest;
 import com.codeheadsystems.test.datastore.DataStore;
 import com.codeheadsystems.test.datastore.DynamoDbExtension;
 import com.google.common.collect.ImmutableMap;
@@ -31,28 +31,37 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+/**
+ * The type Full ddb dao test.
+ */
 @ExtendWith(DynamoDbExtension.class)
-public class FullDDBDAOTest extends FullDAOTest {
+public class FullDdbDaoTest extends FullDaoTest {
 
   @DataStore private DynamoDBMapper mapper;
-  @DataStore private AmazonDynamoDB amazonDynamoDB;
+  @DataStore private AmazonDynamoDB amazonDynamoDb;
 
+  /**
+   * Sets .
+   */
   @BeforeEach
   void setup() {
-    amazonDynamoDB.createTable(mapper.generateCreateTableRequest(DDBEntry.class)
+    amazonDynamoDb.createTable(mapper.generateCreateTableRequest(DdbEntry.class)
         .withBillingMode(BillingMode.PAY_PER_REQUEST));
   }
 
+  /**
+   * Tear down.
+   */
   @AfterEach
   void tearDown() {
     // force the table empty
-    amazonDynamoDB.deleteTable(mapper.generateDeleteTableRequest(DDBEntry.class));
+    amazonDynamoDb.deleteTable(mapper.generateDeleteTableRequest(DdbEntry.class));
   }
 
   @Override
   protected ResolverConfiguration resolverConfiguration() {
     return ImmutableResolverConfiguration.builder()
-        .resolverClass(MockDataDDBDAO.class.getCanonicalName())
+        .resolverClass(MockDataDdbDao.class.getCanonicalName())
         .build();
   }
 

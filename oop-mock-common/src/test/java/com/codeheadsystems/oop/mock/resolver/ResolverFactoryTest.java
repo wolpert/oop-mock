@@ -38,6 +38,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+/**
+ * The type Resolver factory test.
+ */
 @ExtendWith(MockitoExtension.class)
 class ResolverFactoryTest {
 
@@ -49,6 +52,9 @@ class ResolverFactoryTest {
   @Mock private Hasher hasher;
   private Map<Class<?>, Object> instanceMap;
 
+  /**
+   * Sets .
+   */
   @BeforeEach
   void setup() {
     instanceMap = ImmutableMap.of(
@@ -60,24 +66,38 @@ class ResolverFactoryTest {
     );
   }
 
-  private MockDataResolver factoryConstructAndGetResolver(String classname) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
+  private MockDataResolver factoryConstructAndGetResolver(String classname) throws ClassNotFoundException,
+      InvocationTargetException, InstantiationException, IllegalAccessException {
     return new ResolverFactory(classname, instanceMap).build();
   }
 
+  /**
+   * Build no inject.
+   */
   @Test
   void build_noInject() {
     assertThatExceptionOfType(IllegalArgumentException.class)
-        .isThrownBy(() -> factoryConstructAndGetResolver("com.codeheadsystems.oop.mock.resolver.ResolverFactoryTest$DoNothing"))
+        .isThrownBy(() -> factoryConstructAndGetResolver(
+            "com.codeheadsystems.oop.mock.resolver.ResolverFactoryTest$DoNothing"))
         .withMessageContaining("No constructor with @Inject for");
   }
 
-  //@Test // disabled because this doesn't fail the way we think it should
+  /**
+   * Build bad constructor args.
+   * Test disabled because this doesn't fail the way we think it should
+   */
   void build_badConstructorArgs() {
     assertThatExceptionOfType(IllegalArgumentException.class)
-        .isThrownBy(() -> factoryConstructAndGetResolver("com.codeheadsystems.oop.mock.resolver.ResolverFactoryTest$BadConstructorArgs"))
+        .isThrownBy(() -> factoryConstructAndGetResolver(
+            "com.codeheadsystems.oop.mock.resolver.ResolverFactoryTest$BadConstructorArgs"))
         .withMessageContaining("Missing injected param for class");
   }
 
+  /**
+   * Build good example with arg.
+   *
+   * @throws Exception the exception
+   */
   @Test
   void build_goodExampleWithArg() throws Exception {
     assertThat(factoryConstructAndGetResolver(GoodExampleWithArg.class.getCanonicalName()))
@@ -85,6 +105,11 @@ class ResolverFactoryTest {
         .isInstanceOf(MockDataResolver.class);
   }
 
+  /**
+   * Build good example with subclass.
+   *
+   * @throws Exception the exception
+   */
   @Test
   void build_goodExampleWithSubclass() throws Exception {
     assertThat(factoryConstructAndGetResolver(GoodExampleWithSubclass.class.getCanonicalName()))
@@ -92,6 +117,9 @@ class ResolverFactoryTest {
         .isInstanceOf(MockDataResolver.class);
   }
 
+  /**
+   * Build good example with no args wrong return type.
+   */
   @Test
   void build_goodExampleWithNoArgs_wrongReturnType() {
     assertThatExceptionOfType(ClassCastException.class)
@@ -100,6 +128,11 @@ class ResolverFactoryTest {
         });
   }
 
+  /**
+   * Build good example with no args.
+   *
+   * @throws Exception the exception
+   */
   @Test
   void build_goodExampleWithNoArgs() throws Exception {
     assertThat(factoryConstructAndGetResolver(NoArgGoodExample.class.getCanonicalName()))
@@ -107,8 +140,20 @@ class ResolverFactoryTest {
         .isInstanceOf(MockDataResolver.class);
   }
 
-  public class BadConstructorArgs extends DoNothing {
+  /**
+   * The type Bad constructor args.
+   */
+  public static class BadConstructorArgs extends DoNothing {
 
+    /**
+     * Instantiates a new Bad constructor args.
+     *
+     * @param configuration the configuration
+     * @param converter     the converter
+     * @param manager       the manager
+     * @param translator    the translator
+     * @param badArg        the bad arg
+     */
     @Inject
     public BadConstructorArgs(final OopMockConfiguration configuration,
                               final JsonConverter converter,
@@ -119,14 +164,25 @@ class ResolverFactoryTest {
     }
   }
 
-  public class UselessClass {
+  /**
+   * The type Useless class.
+   */
+  public static class UselessClass {
+    /**
+     * Instantiates a new Useless class.
+     *
+     * @param other the other
+     */
     @Inject
     public UselessClass(final Object other) {
 
     }
   }
 
-  public class DoNothing implements MockDataResolver {
+  /**
+   * The type Do nothing.
+   */
+  public static class DoNothing implements MockDataResolver {
 
     @Override
     public Optional<MockedData> resolve(final String namespace, final String lookup, final String discriminator) {

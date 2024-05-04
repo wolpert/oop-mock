@@ -59,8 +59,6 @@ public class ClassOopMock implements OopMock {
 
   @Override
   public String toString() {
-    return "ClassOopMock{" +
-        "namespace='" + namespace + '\'' +
-        '}';
+    return "ClassOopMock{" + "namespace='" + namespace + '\'' + '}';
   }
 }

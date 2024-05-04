@@ -33,8 +33,8 @@ import org.slf4j.LoggerFactory;
  * This is a builder for the resolver as defined in the OppMockConfiguration file. Note that it's generic for
  * also the DAO instance as well. We use this because we want the configuration file to define the resolver we
  * need to include. So this one class needs runtime injection.
- * <p>
- * Update: 5/30/2022: This is gotten too weird. Prepare for a refactoring.
+ *
+ * <p>Update: 5/30/2022: This is gotten too weird. Prepare for a refactoring.
  * BWA HAHA HAHAHAH AHA HA
  */
 @Singleton
@@ -69,7 +69,8 @@ public class ResolverFactory {
    * @throws InstantiationException    the instantiation exception
    * @throws IllegalAccessException    the illegal access exception
    */
-  public <T> T build() throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
+  public <T> T build() throws ClassNotFoundException, InvocationTargetException, InstantiationException,
+      IllegalAccessException {
     LOGGER.info("build({})", resolverClass);
     final Class<?> clazz = Class.forName(resolverClass);
     return buildForClass(clazz);
@@ -80,7 +81,8 @@ public class ResolverFactory {
    * depends on exists in the map given to us. And that map cannot be named. There must be a better way in dagger to
    * do this.
    */
-  private <T> T buildForClass(final Class<?> clazz) throws ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException {
+  private <T> T buildForClass(final Class<?> clazz) throws ClassNotFoundException, InvocationTargetException,
+      InstantiationException, IllegalAccessException {
     final Constructor<?> constructor = Arrays.stream(clazz.getConstructors())
         .filter(c -> c.isAnnotationPresent(Inject.class))
         .findFirst()
@@ -96,7 +98,8 @@ public class ResolverFactory {
         // hail mary...
         args[i] = buildForClass(param);
         if (args[i] == null) {
-          throw new IllegalArgumentException("Missing injected param for class " + resolverClass + " type " + params[i].getName());
+          throw new IllegalArgumentException(
+              "Missing injected param for class " + resolverClass + " type " + params[i].getName());
         }
       }
     }

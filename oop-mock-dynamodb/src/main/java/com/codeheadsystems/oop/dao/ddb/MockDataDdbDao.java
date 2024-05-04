@@ -17,9 +17,9 @@
 package com.codeheadsystems.oop.dao.ddb;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
-import com.codeheadsystems.oop.client.dao.MockDataDAO;
-import com.codeheadsystems.oop.dao.ddb.converter.DDBEntryConverter;
-import com.codeheadsystems.oop.dao.ddb.model.DDBEntry;
+import com.codeheadsystems.oop.client.dao.MockDataDao;
+import com.codeheadsystems.oop.dao.ddb.converter.DdbEntryConverter;
+import com.codeheadsystems.oop.dao.ddb.model.DdbEntry;
 import com.codeheadsystems.oop.mock.model.MockedData;
 import java.util.Optional;
 import javax.inject.Inject;
@@ -31,11 +31,11 @@ import org.slf4j.LoggerFactory;
  * The type Mock data ddbdao.
  */
 @Singleton
-public class MockDataDDBDAO implements MockDataDAO {
+public class MockDataDdbDao implements MockDataDao {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(MockDataDDBDAO.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(MockDataDdbDao.class);
   private final DynamoDBMapper mapper;
-  private DDBEntryConverter converter;
+  private final DdbEntryConverter converter;
 
   /**
    * Instantiates a new Mock data ddbdao.
@@ -44,11 +44,11 @@ public class MockDataDDBDAO implements MockDataDAO {
    * @param converter the converter
    */
   @Inject
-  public MockDataDDBDAO(final DynamoDBMapper mapper,
-                        final DDBEntryConverter converter) {
+  public MockDataDdbDao(final DynamoDBMapper mapper,
+                        final DdbEntryConverter converter) {
     this.mapper = mapper;
     this.converter = converter;
-    LOGGER.info("MockDataDDBDAO({},{})", mapper, converter);
+    LOGGER.info("MockDataDdbDao({},{})", mapper, converter);
   }
 
   @Override
@@ -70,7 +70,7 @@ public class MockDataDDBDAO implements MockDataDAO {
   public Optional<MockedData> resolve(final String namespace,
                                       final String lookup,
                                       final String discriminator) {
-    final DDBEntry entry = mapper.load(converter.convert(namespace, lookup, discriminator));
+    final DdbEntry entry = mapper.load(converter.convert(namespace, lookup, discriminator));
     if (entry == null) {
       return Optional.empty();
     } else {

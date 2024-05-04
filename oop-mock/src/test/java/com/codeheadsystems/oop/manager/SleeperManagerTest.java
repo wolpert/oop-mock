@@ -35,13 +35,13 @@ class SleeperManagerTest {
 
   @Test
   void sleep() {
-    sleeperManager.sleep(0);// no exception please.
+    sleeperManager.sleep(0);
   }
 
   /**
    * I wait for NO cpu. Well, maybe a little.
    *
-   * @throws InterruptedException
+   * @throws InterruptedException if we are interrupted.
    */
   @Test
   void interruptedSleep() throws InterruptedException {

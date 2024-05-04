@@ -20,8 +20,16 @@ import com.codeheadsystems.oop.mock.model.MockedData;
 import java.util.Optional;
 import javax.inject.Inject;
 
+/**
+ * The type Good example with subclass.
+ */
 public class GoodExampleWithSubclass implements MockDataResolver {
 
+  /**
+   * Instantiates a new Good example with subclass.
+   *
+   * @param subclas the subclas
+   */
   @Inject
   public GoodExampleWithSubclass(final GoodExampleWithArg subclas) {
 

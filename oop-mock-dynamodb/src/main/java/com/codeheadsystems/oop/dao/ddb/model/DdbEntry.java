@@ -25,7 +25,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
  * The type Ddb entry.
  */
 @DynamoDBTable(tableName = "oop_mock_data")
-public class DDBEntry {
+public class DdbEntry {
 
   private String hash;
   private String range;
@@ -35,7 +35,7 @@ public class DDBEntry {
   /**
    * Instantiates a new Ddb entry.
    */
-  public DDBEntry() {
+  public DdbEntry() {
   }
 
   /**
@@ -44,7 +44,7 @@ public class DDBEntry {
    * @param hash  the hash
    * @param range the range
    */
-  public DDBEntry(final String hash, final String range) {
+  public DdbEntry(final String hash, final String range) {
     this.hash = hash;
     this.range = range;
   }
@@ -56,7 +56,7 @@ public class DDBEntry {
    * @param range    the range
    * @param mockData the mock data
    */
-  public DDBEntry(final String hash, final String range, final String mockData) {
+  public DdbEntry(final String hash, final String range, final String mockData) {
     this.hash = hash;
     this.range = range;
     this.mockData = mockData;

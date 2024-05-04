@@ -20,8 +20,14 @@ import com.codeheadsystems.oop.mock.model.MockedData;
 import java.util.Optional;
 import javax.inject.Inject;
 
+/**
+ * The type No arg good example.
+ */
 public class NoArgGoodExample implements MockDataResolver {
 
+  /**
+   * Instantiates a new No arg good example.
+   */
   @Inject
   public NoArgGoodExample() {
   }

@@ -19,7 +19,7 @@ package com.codeheadsystems.oop.dao.ddb.converter;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-import com.codeheadsystems.oop.dao.ddb.model.DDBEntry;
+import com.codeheadsystems.oop.dao.ddb.model.DdbEntry;
 import com.codeheadsystems.oop.mock.Hasher;
 import com.codeheadsystems.oop.mock.converter.JsonConverter;
 import com.codeheadsystems.oop.mock.model.MockedData;
@@ -30,26 +30,26 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-class DDBEntryConverterTest {
+class DdbEntryConverterTest {
 
   public static final String NAMESPACE = "namespace";
   public static final String LOOKUP = "lookup";
   public static final String DISCRIMINATOR = "discriminator";
   public static final String HASH = "hash";
   public static final String RANGE = "range";
-  public static final DDBEntry ENTRY_WITHOUT_DATA = new DDBEntry(HASH, RANGE);
+  public static final DdbEntry ENTRY_WITHOUT_DATA = new DdbEntry(HASH, RANGE);
   private static final String JSON = "JSON";
-  public static final DDBEntry ENTRY_WITH_DATA = new DDBEntry(HASH, RANGE, JSON);
+  public static final DdbEntry ENTRY_WITH_DATA = new DdbEntry(HASH, RANGE, JSON);
 
   @Mock private Hasher hasher;
   @Mock private JsonConverter jsonConverter;
   @Mock private MockedData mockedData;
 
-  private DDBEntryConverter converter;
+  private DdbEntryConverter converter;
 
   @BeforeEach
   void setup() {
-    converter = new DDBEntryConverter(hasher, jsonConverter);
+    converter = new DdbEntryConverter(hasher, jsonConverter);
   }
 
   @Test

@@ -7,7 +7,8 @@ test client calls the service, the service will use the mock instead of the
 intended target. Commonly used to mock out dependencies of the service under
 test.
 
-Java8 Compatible.
+## Status
+![Oop-Mock Build](https://github.com/wolpert/oop-mock/actions/workflows/gradle.yml/badge.svg)
 
 ## Adding to your projects
 
@@ -15,8 +16,8 @@ Java8 Compatible.
 
 ```groovy
 dependencies {
-    implementation 'com.codeheadsystems:oop-mock:1.0.1'
-    implementation 'com.codeheadsystems:oop-mock-dynamodb:1.0.1'
+    implementation 'com.codeheadsystems:oop-mock:1.0.2'
+    implementation 'com.codeheadsystems:oop-mock-dynamodb:1.0.2'
 }
 ```
 
@@ -24,8 +25,8 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.codeheadsystems:oop-mock-client:1.0.1'
-    implementation 'com.codeheadsystems:oop-mock-dynamodb:1.0.1'
+    implementation 'com.codeheadsystems:oop-mock-client:1.0.2'
+    implementation 'com.codeheadsystems:oop-mock-dynamodb:1.0.2'
 }
 ```
 

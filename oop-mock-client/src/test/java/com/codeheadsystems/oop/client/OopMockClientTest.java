@@ -19,7 +19,7 @@ package com.codeheadsystems.oop.client;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import com.codeheadsystems.oop.client.dao.MockDataDAO;
+import com.codeheadsystems.oop.client.dao.MockDataDao;
 import com.codeheadsystems.oop.mock.Hasher;
 import com.codeheadsystems.oop.mock.model.MockedData;
 import com.codeheadsystems.oop.mock.translator.Translator;
@@ -41,7 +41,7 @@ class OopMockClientTest {
   @Mock private MockedData mockedData;
   @Mock private Hasher hasher;
   @Mock private Translator translator;
-  @Mock private MockDataDAO dao;
+  @Mock private MockDataDao dao;
 
   private OopMockClient client;
 

@@ -76,7 +76,7 @@ public class ProxyManager {
       final MockedData unmarshalled = mockedData.get();
       LOGGER.info("Found mocked result: {},{} -> {}", lookup, id, unmarshalled);
       final R result = translator.unmarshal(returnClass, unmarshalled);
-      delayManager.delay(startTime, unmarshalled.delayInMS());
+      delayManager.delay(startTime, unmarshalled.delayInMs());
       return result;
     } else {
       LOGGER.debug("Not mocked: {},{}", lookup, id);

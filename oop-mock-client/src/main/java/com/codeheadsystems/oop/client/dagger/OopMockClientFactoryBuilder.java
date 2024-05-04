@@ -17,7 +17,7 @@
 package com.codeheadsystems.oop.client.dagger;
 
 import com.codeheadsystems.oop.client.OopMockClientFactory;
-import com.codeheadsystems.oop.client.dao.MockDataDAO;
+import com.codeheadsystems.oop.client.dao.MockDataDao;
 import com.codeheadsystems.oop.mock.dagger.ResolverModule;
 import com.codeheadsystems.oop.mock.dagger.StandardModule;
 import com.codeheadsystems.oop.mock.resolver.ResolverFactory;
@@ -77,11 +77,11 @@ public interface OopMockClientFactoryBuilder {
      */
     @Provides
     @Singleton
-    MockDataDAO dao(final ResolverFactory resolverFactory) {
+    MockDataDao dao(final ResolverFactory resolverFactory) {
       try {
         return resolverFactory.build();
-      } catch (ClassNotFoundException | InvocationTargetException | InstantiationException |
-               IllegalAccessException e) {
+      } catch (ClassNotFoundException | InvocationTargetException | InstantiationException
+               | IllegalAccessException e) {
         throw new RuntimeException(e);
       }
     }

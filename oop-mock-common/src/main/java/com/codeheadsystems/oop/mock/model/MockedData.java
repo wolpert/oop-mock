@@ -43,7 +43,7 @@ public interface MockedData {
    * @return the long
    */
   @Value.Default
-  default long delayInMS() {
+  default long delayInMs() {
     return 0;
   }
 

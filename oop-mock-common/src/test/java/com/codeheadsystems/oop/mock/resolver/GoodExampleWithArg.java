@@ -24,8 +24,19 @@ import com.codeheadsystems.oop.mock.translator.Translator;
 import java.util.Optional;
 import javax.inject.Inject;
 
+/**
+ * The type Good example with arg.
+ */
 public class GoodExampleWithArg implements MockDataResolver {
 
+  /**
+   * Instantiates a new Good example with arg.
+   *
+   * @param configuration the configuration
+   * @param converter     the converter
+   * @param manager       the manager
+   * @param translator    the translator
+   */
   @Inject
   public GoodExampleWithArg(final OopMockConfiguration configuration,
                             final JsonConverter converter,

@@ -21,8 +21,8 @@ import com.codeheadsystems.oop.mock.model.MockedData;
 /**
  * Provides the mechanism to un/marshal results. This can be used to store values in the datastore,
  * as well as get them out.
- * <p>
- * The test client that stores the value must use the same translator as the server.
+ *
+ * <p>The test client that stores the value must use the same translator as the server.
  */
 public interface Translator {
 

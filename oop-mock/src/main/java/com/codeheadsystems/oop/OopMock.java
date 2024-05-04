@@ -20,8 +20,8 @@ import java.util.function.Supplier;
 
 /**
  * Out of process mock provides the ability to define mocks externally to the current process.
- * <p>
- * This exists as a way to do integration testing where you control in the test client what is
+ *
+ * <p>This exists as a way to do integration testing where you control in the test client what is
  * actually mocked. To use this, you provide the proxy for the closure you want to mock. By
  * default, the mock will simply call the closure being mocked. This is to help prevent setting up
  * mocks in a production environment.

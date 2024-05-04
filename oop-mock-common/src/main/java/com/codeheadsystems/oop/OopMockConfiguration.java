@@ -64,8 +64,8 @@ public interface OopMockConfiguration {
    * @return the long
    */
   @Value.Default
-  @JsonProperty("maxDelayTimeMS")
-  default long maxDelayTimeMS() {
+  @JsonProperty("maxDelayTimeMs")
+  default long maxDelayTimeMs() {
     return 5000L;
   }
 

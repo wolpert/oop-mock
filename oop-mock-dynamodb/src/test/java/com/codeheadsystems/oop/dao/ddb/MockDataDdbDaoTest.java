@@ -22,8 +22,8 @@ import static org.mockito.Mockito.when;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.model.BillingMode;
-import com.codeheadsystems.oop.dao.ddb.converter.DDBEntryConverter;
-import com.codeheadsystems.oop.dao.ddb.model.DDBEntry;
+import com.codeheadsystems.oop.dao.ddb.converter.DdbEntryConverter;
+import com.codeheadsystems.oop.dao.ddb.model.DdbEntry;
 import com.codeheadsystems.oop.mock.model.MockedData;
 import com.codeheadsystems.test.datastore.DataStore;
 import com.codeheadsystems.test.datastore.DynamoDbExtension;
@@ -41,43 +41,76 @@ import org.mockito.junit.jupiter.MockitoExtension;
  * This is half unit test and have functional in that we use a real (local) ddb instance.
  * I'm just really tired of cases where people ignore how the database works until integ
  * tests. So forcing the issue here.
- * <p>
- * Don't worry, the DDB instance is fast. But you'll need to load the SQL lib into your
+ *
+ * <p>Don't worry, the DDB instance is fast. But you'll need to load the SQL lib into your
  * path for now to get it to work. See DynamoDBExtension for details. (Only needed for
  * intelij, not for gradle on the cmdline.)
  */
 @ExtendWith({MockitoExtension.class, DynamoDbExtension.class})
-class MockDataDDBDAOTest {
+class MockDataDdbDaoTest {
 
+  /**
+   * The constant NAMESPACE.
+   */
   public static final String NAMESPACE = "namespace";
+  /**
+   * The constant LOOKUP.
+   */
   public static final String LOOKUP = "lookup";
+  /**
+   * The constant DISCRIMINATOR.
+   */
   public static final String DISCRIMINATOR = "discriminator";
+  /**
+   * The constant HASH.
+   */
   public static final String HASH = "a";
+  /**
+   * The constant RANGE.
+   */
   public static final String RANGE = "b";
-  public static final DDBEntry ENTRY_WITHOUT_DATA = new DDBEntry(HASH, RANGE);
+  /**
+   * The constant ENTRY_WITHOUT_DATA.
+   */
+  public static final DdbEntry ENTRY_WITHOUT_DATA = new DdbEntry(HASH, RANGE);
+  /**
+   * The constant MOCK_DATA.
+   */
   public static final String MOCK_DATA = "c";
-  public static final DDBEntry ENTRY_WITH_DATA = new DDBEntry(HASH, RANGE, MOCK_DATA);
-  private MockDataDDBDAO dao;
+  /**
+   * The constant ENTRY_WITH_DATA.
+   */
+  public static final DdbEntry ENTRY_WITH_DATA = new DdbEntry(HASH, RANGE, MOCK_DATA);
+  private MockDataDdbDao dao;
 
   @DataStore private DynamoDBMapper mapper;
-  @DataStore private AmazonDynamoDB amazonDynamoDB;
+  @DataStore private AmazonDynamoDB amazonDynamoDb;
   @Mock private MockedData mockedData;
-  @Mock private DDBEntryConverter converter;
-  @Captor private ArgumentCaptor<DDBEntry> ddbEntryCaptor;
+  @Mock private DdbEntryConverter converter;
+  @Captor private ArgumentCaptor<DdbEntry> ddbEntryCaptor;
 
+  /**
+   * Sets .
+   */
   @BeforeEach
   void setup() {
-    dao = new MockDataDDBDAO(mapper, converter);
-    amazonDynamoDB.createTable(mapper.generateCreateTableRequest(DDBEntry.class)
+    dao = new MockDataDdbDao(mapper, converter);
+    amazonDynamoDb.createTable(mapper.generateCreateTableRequest(DdbEntry.class)
         .withBillingMode(BillingMode.PAY_PER_REQUEST));
   }
 
+  /**
+   * Tear down.
+   */
   @AfterEach
   void tearDown() {
     // force the table empty
-    amazonDynamoDB.deleteTable(mapper.generateDeleteTableRequest(DDBEntry.class));
+    amazonDynamoDb.deleteTable(mapper.generateDeleteTableRequest(DdbEntry.class));
   }
 
+  /**
+   * Resolve doesnotexist.
+   */
   @Test
   void resolve_doesnotexist() {
     when(converter.convert(NAMESPACE, LOOKUP, DISCRIMINATOR)).thenReturn(ENTRY_WITHOUT_DATA);
@@ -86,6 +119,9 @@ class MockDataDDBDAOTest {
         .isEmpty();
   }
 
+  /**
+   * Resolve exist.
+   */
   @Test
   void resolve_exist() {
     when(converter.convert(NAMESPACE, LOOKUP, DISCRIMINATOR)).thenReturn(ENTRY_WITHOUT_DATA);
@@ -97,6 +133,9 @@ class MockDataDDBDAOTest {
         .contains(mockedData);
   }
 
+  /**
+   * Resolve exist butnomockeddata.
+   */
   @Test
   void resolve_exist_butnomockeddata() {
     when(converter.convert(NAMESPACE, LOOKUP, DISCRIMINATOR)).thenReturn(ENTRY_WITHOUT_DATA);
@@ -107,6 +146,9 @@ class MockDataDDBDAOTest {
         .isEmpty();
   }
 
+  /**
+   * Store.
+   */
   @Test
   void store() {
     when(converter.convert(NAMESPACE, LOOKUP, DISCRIMINATOR, mockedData))
@@ -119,6 +161,9 @@ class MockDataDDBDAOTest {
         .hasFieldOrPropertyWithValue("mockData", MOCK_DATA);
   }
 
+  /**
+   * Delete exists.
+   */
   @Test
   void delete_exists() {
     mapper.save(ENTRY_WITH_DATA);
@@ -133,6 +178,9 @@ class MockDataDDBDAOTest {
         .isEmpty();
   }
 
+  /**
+   * Delete doesnotexists.
+   */
   @Test
   void delete_doesnotexists() {
     when(converter.convert(NAMESPACE, LOOKUP, DISCRIMINATOR)).thenReturn(ENTRY_WITHOUT_DATA);

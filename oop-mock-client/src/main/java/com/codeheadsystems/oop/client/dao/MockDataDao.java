@@ -22,7 +22,7 @@ import com.codeheadsystems.oop.mock.resolver.MockDataResolver;
 /**
  * The interface Mock data dao.
  */
-public interface MockDataDAO extends MockDataResolver {
+public interface MockDataDao extends MockDataResolver {
 
   /**
    * Store.

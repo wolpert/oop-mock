@@ -16,7 +16,7 @@
 
 package com.codeheadsystems.oop.client;
 
-import com.codeheadsystems.oop.client.dao.MockDataDAO;
+import com.codeheadsystems.oop.client.dao.MockDataDao;
 import com.codeheadsystems.oop.mock.Hasher;
 import com.codeheadsystems.oop.mock.model.MockedData;
 import com.codeheadsystems.oop.mock.translator.Translator;
@@ -32,7 +32,7 @@ public class OopMockClient {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(OopMockClient.class);
 
-  private final MockDataDAO dao;
+  private final MockDataDao dao;
   private final Translator translator;
   private final String namespace;
 
@@ -47,7 +47,7 @@ public class OopMockClient {
   @AssistedInject
   public OopMockClient(@Assisted final Class<?> clazz,
                        final Hasher hasher,
-                       final MockDataDAO dao,
+                       final MockDataDao dao,
                        final Translator translator) {
     LOGGER.info("OopMockClient({})", clazz);
     this.dao = dao;

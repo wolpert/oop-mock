@@ -60,7 +60,7 @@ class DelayManagerTest {
   @MethodSource("delayTestData")
   void delay(final long max, final long start, final long delay, final long end, final long expected) {
     when(configuration.delayResponseEnabled()).thenReturn(true);
-    when(configuration.maxDelayTimeMS()).thenReturn(max);
+    when(configuration.maxDelayTimeMs()).thenReturn(max);
     delayManager = new DelayManager(configuration, clock, sleeperManager);
     when(clock.millis()).thenReturn(end);
     delayManager.delay(start, delay);
@@ -70,7 +70,7 @@ class DelayManagerTest {
   @Test
   void delay_disabled() {
     when(configuration.delayResponseEnabled()).thenReturn(false);
-    when(configuration.maxDelayTimeMS()).thenReturn(100L);
+    when(configuration.maxDelayTimeMs()).thenReturn(100L);
     delayManager = new DelayManager(configuration, clock, sleeperManager);
     delayManager.delay(100L, 100L);
     verifyNoInteractions(sleeperManager);
