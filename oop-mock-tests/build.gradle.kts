@@ -30,6 +30,9 @@ dependencies {
 
     implementation(libs.bundles.testing)
     implementation(libs.bundles.logback)
+    testImplementation(libs.bundles.testing)
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
 }
 
 tasks.named<Test>("test") {
