@@ -5,7 +5,7 @@
 assertj = "3.25.3"
 aws-dynamodblocal = "2.4.0"
 awsSDK1 = "1.12.718"
-awsSDK2 = "2.25.47"
+awsSDK2 = "2.25.48"
 codehead-test = "1.0.6"
 codehead-database-test = "1.0.3"
 commons-io = "2.16.1"
