@@ -12,12 +12,14 @@ test.
 
 ## Adding to your projects
 
+Requires Java 17 or higher.
+
 ### Server side
 
 ```groovy
 dependencies {
-    implementation 'com.codeheadsystems:oop-mock:1.0.2'
-    implementation 'com.codeheadsystems:oop-mock-dynamodb:1.0.2'
+    implementation 'com.codeheadsystems:oop-mock:1.0.3'
+    implementation 'com.codeheadsystems:oop-mock-dynamodb:1.0.3'
 }
 ```
 
@@ -25,8 +27,8 @@ dependencies {
 
 ```groovy
 dependencies {
-    implementation 'com.codeheadsystems:oop-mock-client:1.0.2'
-    implementation 'com.codeheadsystems:oop-mock-dynamodb:1.0.2'
+    implementation 'com.codeheadsystems:oop-mock-client:1.0.3'
+    implementation 'com.codeheadsystems:oop-mock-dynamodb:1.0.3'
 }
 ```
 
