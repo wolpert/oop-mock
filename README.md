@@ -12,7 +12,17 @@ test.
 
 ## Adding to your projects
 
-Requires Java 17 or higher.
+### Version details
+
+Requires JDK 17.
+
+
+| Library           | Purpose                           | Version                                                                                       |
+|-------------------|-----------------------------------|-----------------------------------------------------------------------------------------------|
+| oop-mock          | Core Library                      | ![feature-flag](https://img.shields.io/maven-central/v/com.codeheadsystems/oop-mock)          |
+| oop-mock-dynamodb | Core Library                      | ![feature-flag](https://img.shields.io/maven-central/v/com.codeheadsystems/oop-mock-dynamodb) |
+| oop-mock-client   | Core Library                      | ![feature-flag](https://img.shields.io/maven-central/v/com.codeheadsystems/oop-mock-client)   |
+
 
 ### Server side
 
