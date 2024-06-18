@@ -9,7 +9,7 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "weekly"
-      day: "sunday"
+      day: "thursday"
     groups:
        # Specify a name for the group, which will be used in pull request titles
        # and branch names
