@@ -3,10 +3,10 @@
 
 [versions]
 assertj = "3.26.0"
-awsSDK1 = "1.12.744"
+awsSDK1 = "1.12.745"
 aws-dynamodblocal = "2.5.1"
-awsSDK2 = "2.26.3"
-codehead-test = "1.0.8"
+awsSDK2 = "2.26.4"
+codehead-test = "1.0.9"
 codehead-database-test = "1.0.6"
 commons-io = "2.16.1"
 dagger = "2.51.1"
