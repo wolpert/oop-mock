@@ -5,7 +5,6 @@
 assertj = "3.26.0"
 awsSDK1 = "1.12.744"
 aws-dynamodblocal = "2.5.1"
-awsSDK2 = "2.26.3"
 codehead-test = "1.0.8"
 codehead-database-test = "1.0.6"
 commons-io = "2.16.1"
@@ -14,19 +13,13 @@ guava = "33.2.1-jre"
 immutables = '2.10.1'
 jackson = '2.17.1'
 junit-jupiter = "5.10.2"
-junit-platform = '1.10.2'
-micrometer = '1.13.1'
-metrics = '4.2.26'
 mokito = '5.12.0'
 logback = '1.5.6'
-log4j = '2.23.1'
 slf4j = '2.0.13'
 
 [libraries]
 assertj = { module = "org.assertj:assertj-core", version.ref = "assertj" }
 aws-dynamodblocal = { module = "com.amazonaws:DynamoDBLocal", version.ref = "aws-dynamodblocal" }
-aws-sdk2-ddb = { module = "software.amazon.awssdk:dynamodb", version.ref = "awsSDK2" }
-aws-sdk2-bom = { module = "software.amazon.awssdk:bom", version.ref = "awsSDK2" }
 aws-sdk-ddb = { module = "com.amazonaws:aws-java-sdk-dynamodb", version.ref = "awsSDK1" }
 codehead-test = { module = "com.codeheadsystems:codehead-test", version.ref = "codehead-test" }
 database-test = { module = "com.codeheadsystems:database-test", version.ref = "codehead-database-test" }
@@ -45,15 +38,9 @@ junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "jun
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter" }
 junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit-jupiter" }
-junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform" }
 
-log4j-api = { module = "org.apache.logging.log4j:log4j-api", version.ref = "log4j" }
-log4j-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "log4j" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 logback-core = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
-
-metrics-core = { module = "io.dropwizard.metrics:metrics-core", version.ref = "metrics" }
-micrometer-core = { module = "io.micrometer:micrometer-core", version.ref = "micrometer" }
 
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mokito" }
 mockito-junit-jupiter = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mokito" }
@@ -62,5 +49,4 @@ slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
 [bundles]
 jackson = ["jackson-core", "jackson-databind", "jackson-annotations", "jackson-datatype-jdk8"]
 logback = ["logback-classic", "logback-core"]
-log4j = ["log4j-api", "log4j-core"]
 testing = ["mockito-core", "mockito-junit-jupiter", "assertj", "junit-jupiter", "junit-jupiter-api", "junit-jupiter-engine", "junit-jupiter-params", "codehead-test"]
