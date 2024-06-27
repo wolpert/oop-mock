@@ -3,8 +3,8 @@
 
 [versions]
 assertj = "3.26.0"
-awsSDK1 = "1.12.747"
-aws-dynamodblocal = "2.5.1"
+awsSDK1 = "1.12.751"
+aws-dynamodblocal = "2.5.2"
 codehead-test = "1.0.9"
 codehead-database-test = "1.0.7"
 commons-io = "2.16.1"
