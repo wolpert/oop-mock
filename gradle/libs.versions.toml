@@ -3,7 +3,7 @@
 
 [versions]
 assertj = "3.26.3"
-awsSDK1 = "1.12.771"
+awsSDK1 = "1.12.772"
 aws-dynamodblocal = "2.5.2"
 codehead-test = "1.0.9"
 codehead-database-test = "1.0.7"
@@ -14,7 +14,7 @@ immutables = '2.10.1'
 jackson = '2.17.2'
 junit-jupiter = "5.11.0"
 mokito = '5.13.0'
-logback = '1.5.7'
+logback = '1.5.8'
 slf4j = '2.0.16'
 
 [libraries]
