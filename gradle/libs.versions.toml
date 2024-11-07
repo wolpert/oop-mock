@@ -4,7 +4,7 @@
 [versions]
 assertj = "3.26.3"
 awsSDK1 = "1.12.777"
-aws-dynamodblocal = "2.5.2"
+aws-dynamodblocal = "2.5.3"
 codehead-test = "1.0.10"
 codehead-database-test = "1.0.8"
 commons-io = "2.17.0"
