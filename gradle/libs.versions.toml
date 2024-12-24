@@ -2,19 +2,19 @@
 # https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
 
 [versions]
-assertj = "3.26.3"
+assertj = "3.27.0"
 awsSDK1 = "1.12.780"
-aws-dynamodblocal = "2.5.3"
+aws-dynamodblocal = "2.5.4"
 codehead-test = "1.0.11"
 codehead-database-test = "1.0.9"
 commons-io = "2.18.0"
-dagger = "2.53.1"
+dagger = "2.54"
 guava = "33.4.0-jre"
 immutables = '2.10.1'
 jackson = '2.18.2'
 junit-jupiter = "5.11.4"
 mokito = '5.14.2'
-logback = '1.5.12'
+logback = '1.5.15'
 slf4j = '2.0.16'
 
 [libraries]
