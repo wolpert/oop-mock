@@ -2,7 +2,7 @@
 # https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
 
 [versions]
-assertj = "3.27.2"
+assertj = "3.27.3"
 awsSDK1 = "1.12.780"
 aws-dynamodblocal = "2.5.4"
 codehead-test = "1.0.11"
