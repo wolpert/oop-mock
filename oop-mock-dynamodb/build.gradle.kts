@@ -39,6 +39,7 @@ dependencies {
     testImplementation(project(":oop-mock-tests"))
     testImplementation(libs.codehead.test)
     testImplementation(libs.database.test)
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.named<Test>("test") {
