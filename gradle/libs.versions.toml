@@ -14,7 +14,7 @@ immutables = '2.10.1'
 jackson = '2.18.2'
 junit-jupiter = "5.11.4"
 mokito = '5.15.2'
-logback = '1.5.16'
+logback = '1.5.17'
 slf4j = '2.0.16'
 
 [libraries]
