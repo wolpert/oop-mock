@@ -29,6 +29,7 @@ dependencies {
     testImplementation(libs.bundles.logback)
     testAnnotationProcessor(libs.dagger.compiler)
     testImplementation(libs.codehead.test)
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.named<Test>("test") {
