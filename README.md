@@ -1,5 +1,8 @@
 # Out of process Mock
 
+# NOTE: ARCHIVED AND THIS IS MOVED TO https://github.com/wolpert/libraries
+
+
 ## Purpose
 
 Provide a mechanism for external test clients to setup a mock such that when the
